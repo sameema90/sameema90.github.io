@@ -1,0 +1,103 @@
+<DOCTYPE! html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    
+    <title>Moonsighting app</title>
+    <style>
+      #map { height: 600px; }
+      body {background-color: blanchedalmond; text-align: left; color: darkslategrey;}
+    </style>
+
+  </head>
+
+  <body>
+    
+    <h1 style="text-align:center; font-size: 42px; font-style: oblique; font-weight: 900; color:rgb(19, 114, 114);">
+      Let's generate a visibility map for your chosen location and date!</h1>
+  
+    <!-- Location-->
+    <h3 style="text-align:left; font-size: 25px; font-style: oblique; font-weight: 900; color:rgb(2, 47, 73);">
+      Enter your Location:
+
+      <div class="container">
+        <style>
+          input[type=text]{
+            width: fit-content;
+          }
+        </style>
+
+        <input type="text" placeholder="address" id="address">
+        
+        <button aria-setsize="10" onclick="findAddress()">Search</button><br>
+          <div id="results"></div>
+      </div><br>
+
+      <!-- Testing -->
+      <select id="selectLocation">
+        <option>Select a location</option>
+        
+        <button onclick="myFunction5()">submit</button>
+        <h1 id="message5"></h1>
+        <script src="function5.js"></script>
+    
+      </select>
+      
+      <!-- Location -->
+      <script type="text/javascript" src="location.js"></script>
+    </h3>
+
+<!-- Date-->
+    <label for="date" style="text-align:left; font-size: 25px; font-style: oblique; font-weight: 900; color:rgb(2, 47, 73);">Date:</label><br>
+    <input type="date" id="start" min="1800-01-01" max="2050-12-31">
+    <!-- <button onclick="moondata()">submit</button> -->
+    <button onclick="myFunction3()">submit</button>
+    <h1 id="message3"></h1>
+    <script src="function3.js"></script>
+    <!-- <script src="moondata.js"></script> -->
+
+
+ <!-- Moondata-->
+
+    <div class="text-center"> 
+    <button type="button"style="text-align:center" onclick="moondata()">Generate visibility map</button><br>
+    <script src="moondata.js"></script>
+    </div>
+    
+    <span id="name"></span><br/>
+    <span id="iso"></span><br/>
+    <span id="lat"></span><br/>
+    <span id="long"></span><br/>
+
+<!-- Map-->      
+    <div id="map">
+      <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+    </div>
+    <p>
+      <a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
+    </p>
+
+
+    <script>
+      var map = L.map('map').setView([0, 0], 2.2);
+      L.tileLayer('https://api.maptiler.com/maps/openstreetmap/{z}/{x}/{y}.jpg?key=BheDAHxxmks4Hvcs1xiu',{
+      tileSize: 512,
+      zoomOffset: -1,
+      minZoom: 1,
+      attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+      crossOrigin: true
+      }).addTo(map);
+    </script>
+
+  </body>
+
+</html>
+
+</DOCTYPE>
+
+
